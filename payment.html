@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LastikPark | Araç Bakım Ödeme Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #000000;
+            --secondary-red: gray;
+            --white: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--primary-black);
+            color: var(--white);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .navbar {
+            background-color: var(--secondary-red) !important;
+        }
+
+        .payment-section {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-red));
+            padding: 50px 0;
+        }
+
+        .payment-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--secondary-red);
+            color: var(--white);
+            -webkit-border-radius: 10px; /*chrome için*/
+	-moz-border-radius: 10px; /*mozilla için*/
+	border-radius: 10px; /*ie için ve genel*/
+
+        }
+
+        .form-control {
+            background: rgba(0,0,0,0.5);
+            color: var(--white);
+            border: 1px solid var(--secondary-red);
+        }
+
+        .btn-payment {
+            background: var(--secondary-red);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .btn-payment:hover {
+            background: gray;
+            transform: scale(1.05);
+        }
+
+        .credit-card {
+            background: linear-gradient(45deg, var(--primary-black), var(--secondary-red));
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        footer {
+            background-color: var(--secondary-red) !important;
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    
+
+    <section class="payment-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="credit-card" id="creditCard">
+                        <!-- Kredi kartı görünümü -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="payment-card">
+                        <h2 class="text-center mb-4">AL LASTİK BARIŞ AL</h2>
+                        <form id="paymentForm">
+                            <div class="mb-3">
+                                <label>Araç Sahibi Adı</label>
+                                <input type="text" class="form-control" id="cardName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Plaka Numarası</label>
+                                <input type="text" class="form-control" id="plateNumber" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Kredi Kartı Numarası</label>
+                                <input type="text" class="form-control" id="cardNumber" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Son Kullanma Tarihi</label>
+                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>CVV</label>
+                                    <input type="text" class="form-control" id="cvv" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label>Ödeme Tutarı</label>
+                                <input type="number" class="form-control" id="amount" required>
+                            </div>
+                            <button type="submit" class="btn btn-payment w-100">Ödemeyi Tamamla</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-3">
+        <p>BİLGİLER BENDE VE GÜVENDE</p>
+    </footer>
+
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form verilerini al
+            const formData = {
+                name: document.getElementById('cardName').value,
+                plateNumber: document.getElementById('plateNumber').value,
+                cardNumber: document.getElementById('cardNumber').value,
+                expiryDate: document.getElementById('expiryDate').value,
+                cvv: document.getElementById('cvv').value,
+                amount: document.getElementById('amount').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // localStorage'a kaydet
+            let savedPayments = JSON.parse(localStorage.getItem('lastikparkPayments') || '[]');
+            savedPayments.push(formData);
+            localStorage.setItem('lastikparkPayments', JSON.stringify(savedPayments));
+
+            alert('Ödeme işleminiz başarıyla alınmıştır!');
+        });
+
+        // Kart numarası formatını düzenleme
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(.{4})/g, '$1 ').trim();
+            e.target.value = value;
+        });
+
+        // Tarih formatını düzenleme
+        document.getElementById('expiryDate').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = value.slice(0,2) + '/' + value.slice(2,4);
+            }
+            e.target.value = value;
+        });
+    </script>
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form verilerini al
+            const formData = {
+                name: document.getElementById('cardName').value,
+                plateNumber: document.getElementById('plateNumber').value,
+                cardNumber: document.getElementById('cardNumber').value,
+                expiryDate: document.getElementById('expiryDate').value,
+                cvv: document.getElementById('cvv').value,
+                amount: document.getElementById('amount').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Veriyi txt dosyasına kaydet
+            saveToTextFile(formData);
+
+            alert('Ödeme işleminiz başarıyla alınmıştır!');
+        });
+
+        function saveToTextFile(data) {
+            // Veriyi string formatına çevir
+            const dataString = `
+Ödeme Bilgileri:
+Ad Soyad: ${data.name}
+Plaka Numarası: ${data.plateNumber}
+Kart Numarası: ${data.cardNumber.replace(/\d{12}/, '************')}
+Son Kullanma Tarihi: ${data.expiryDate}
+Tutar: ${data.amount} TL
+Tarih: ${data.timestamp}
+----------------------------
+`;
+
+            // Dosyaya yazma işlemi
+            const blob = new Blob([dataString], {type: 'text/plain'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'lastikpark_odemeler.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+
+        // Diğer önceki JavaScript kodları aynı kalacak
+    </script>
+</body>
+</html>

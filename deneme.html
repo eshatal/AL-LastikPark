@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp İletişim Butonu</title>
+    <style>
+        #whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #whatsapp-button a img {
+            width: 60px;
+            /* Butonun genişliği */
+            height: 60px;
+            /* Butonun yüksekliği */
+            border-radius: 50%;
+            /* Yuvarlak buton için */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            /* Gölge efekti */
+            transition: transform 0.2s;
+            /* Hover efekti için geçiş */
+        }
+
+        #whatsapp-button a img:hover {
+            transform: scale(1.1);
+            /* Hover sırasında buton büyümesi */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="whatsapp-button">
+        <a href="https://wa.me/905535252021" target="_blank">
+            <img src="menüler1/SokmeTakma.jpg" alt="WhatsApp" />
+        </a>
+    </div>
+
+    <script>
+        document.querySelector('#whatsapp-button a').addEventListener('click', function () {
+            console.log('WhatsApp butonuna tıklandı!');
+        });
+    </script>
+
+</body>
+
+</html>

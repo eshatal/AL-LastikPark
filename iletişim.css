@@ -1,0 +1,503 @@
+/* Genel Sıfırlama Stilleri */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    background: #95a5a6;
+    width: 14px;
+}
+::-webkit-scrollbar-thumb {
+    background: #2c3e50;
+}
+
+/* Body Temel Stilleri */
+.body {
+    flex: 25%;
+    background-image: url(arkaplan2.jpg);
+}
+
+/* HTML ve Body Boyutlandırma */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Navigasyon Responsive Ayarları */
+nav, nav1 {
+    padding: 10px 30px; /* Varsayılan padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap; /* Küçük ekranlarda sarmalanmayı sağlar */
+}
+nav1 ul{
+    display: flex;
+    gap: 90px;
+    transform: translate(-20%, -0%);
+    font-size: 20px;
+
+    
+}
+
+nav1 ul li{
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+}
+nav1 ul li a {
+    text-decoration: none;
+    color: black;
+}
+nav1 ul li a:hover {
+    color: red;
+}
+
+/* Birinci Navigasyon */
+nav {
+    background: #212529;
+    height: auto; /* Dinamik yükseklik */
+    min-height: 45px;
+}
+
+/* İkinci Navigasyon */
+nav1 {
+    background: white;
+    height: auto; /* Dinamik yükseklik */
+    min-height: 80px;
+    color: black;
+    border-style: solid;
+      border-width: 1px;
+      border-color: black;
+}
+
+/* Navigasyon Listesi Temel Stilleri */
+nav ul, nav1 ul {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Varsayılan boşluk */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Liste Elemanları */
+nav ul li, nav1 ul li {
+    position: relative;
+}
+
+/* Link Stilleri */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease; /* Yumuşak renk geçişi */
+}
+
+/* Hover Efektleri */
+nav ul li a:hover {
+    color: #ff0000;
+}
+
+/* Sosyal Medya İkonları */
+.menu-icon i {
+    color: #fff;
+    font-size: 20px;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.menu-icon i:hover {
+    color: gray;
+}
+
+/* Logo ve İsim Stilleri */
+.logo {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.isimler {
+
+    height: 80px;
+    /*text-align: center;
+    font-size: 35px;
+    color: black;
+    margin: 0;
+    list-style-type: none;
+    text-decoration: none;*/
+}
+
+/* Responsive Tasarım */
+@media screen and (max-width: 1024px) {
+    nav, nav1 {
+        padding: 10px 15px; /* Daha dar padding */
+    }
+
+    nav ul, nav1 ul {
+        gap: 30px; /* Boşlukları azalt */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Mobil Navigasyon Menüsü */
+    nav, nav1 {
+        flex-direction: column; /* Dikey dizilim */
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav ul, nav1 ul {
+        flex-direction: column; /* Menü elemanlarını dikey hizala */
+        gap: 15px; /* Dikey boşluk */
+        width: 100%; /* Tam genişlik */
+        text-align: center;
+    }
+
+    .logo, .isimler {
+        margin-bottom: 10px; /* Alt boşluk */
+    }
+
+    .isimler {
+        font-size: 25px; /* Mobilde küçük font */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Çok küçük ekranlar için */
+    nav, nav1 {
+        padding: 5px;
+    }
+
+    nav ul, nav1 ul {
+        gap: 10px; /* Daha az boşluk */
+    }
+
+    .isimler {
+        font-size: 20px; /* Daha da küçük font */
+    }
+
+    .menu-icon i {
+        font-size: 16px; /* İkon boyutunu küçült */
+    }
+}
+
+/* Mobil Menü Açma/Kapama Butonu (Gerekirse eklenebilir) */
+.mobile-menu-toggle {
+    display: none; /* Varsayılan olarak gizli */
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block; /* Mobilde görünür */
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+}
+
+/* Menü Açık/Kapalı Durumları */
+.nav-menu {
+    transition: all 0.3s ease; /* Yumuşak geçiş */
+}
+
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        max-height: 0; /* Mobilde menüyü gizle */
+        overflow: hidden;
+    }
+
+    .nav-menu.active {
+        max-height: 300px; /* Açıldığında görünür */
+    }
+}
+
+
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    background: #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(arkaplan2.jpg);
+}
+
+.container1 {
+    width: 85%;
+    background: white;
+    border-radius: 6px;
+    padding: 20px 60px 30px 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    
+}
+.container1 .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.container1 .content .left-side {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    position: relative;
+}
+
+.content .left-side::before {
+    content: '';
+    position: absolute;
+    height: 70%;
+    width: 2px;
+    right: -15px;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+.content .left-side .details {
+    margin: 14px;
+    text-align: center;
+}
+
+.content .left-side .details i {
+    font-size: 30px;
+    color: #007eff;
+    margin-bottom: 10px;
+}
+
+.content .left-side .details .topic {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.content .left-side .details .text {
+    font-size: 14px;
+    color: #afafb6;
+}
+
+
+.content .right-side {
+    width: 75%;
+    margin-left: 75px;
+}
+
+.right-side .topic-text {
+    font-size: 23px;
+    font-weight: 600;
+    color: #007eff;
+}
+
+.right-side .input-box {
+    height: 50px;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.input-box input,
+.input-box textarea {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #f0f1f8;
+    border-radius: 6px;
+    padding: 0 15px;
+    resize: none;
+
+}
+
+.message-box {
+    min-height: 210px;
+}
+.input-box textarea {
+    padding-top: 6px;
+}
+.right-side .button {
+    display: inline-block;
+    margin-top: 12px;
+}
+.button input {
+    color: white;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #007eff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button input:hover {
+    background: #295dbc;
+}
+
+
+@media (max-width: 950px) {
+    .container1 {
+        width: 90%;
+        padding: 30px 40px 40px 35px;
+    }
+
+    .content .right-side {
+        width: 75%;
+        margin-left: 55px;
+    }
+}
+
+@media (max-width: 820px) {
+    .container1 {
+        margin: 40px 0;
+        height: 100%; 
+    }
+
+    .content {
+        flex-direction: column-reverse;
+    }
+
+    .left-side {
+        width: 100%;
+        flex-direction: row;
+        margin-top: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .left-side::before {
+        display: none;
+    }
+
+    .right-side {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+
+.containera {
+    max-width: 1600px;
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+
+.sectiona {
+    flex: 1;
+    margin: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sectiona h2 {
+    color: #ff0000;
+    margin-bottom: 20px;
+    margin-left: 15rem;
+}
+
+.brand-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 16rem;
+}
+
+.brand-list li {
+    margin-bottom: 5px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 13rem;
+}
+
+.social-media a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    color: #ccc;
+}
+
+.info {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 12rem;
+}
+
+.hesap {
+    margin-left: 12rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .sectiona h2 {
+        margin-left: 10rem;
+    }
+
+    .brand-list {
+        margin-left: 10rem;
+    }
+
+    .social-media {
+        margin-left: 8rem;
+    }
+
+    .info {
+        margin-left: 8rem;
+    }
+
+    .hesap {
+        margin-left: 8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .containera {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sectiona {
+        margin: 20px 0;
+    }
+
+    .brand-list {
+        margin-left: 0;
+    }
+
+    .social-media, .info, .hesap {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-list {
+        flex-direction: row; /* Yan yana hizalamaya devam ediyoruz */
+    }
+
+    .sectiona h2 {
+        margin-left: 0;
+    }
+}

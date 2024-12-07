@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LASTİK PARK</title>
+    <link rel="stylesheet" href="hakımızda.css">
+    <link rel="stylesheet" href="javas.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    background: #95a5a6;
+    width: 14px;
+}
+::-webkit-scrollbar-thumb {
+    background: #2c3e50;
+}
+
+/* Body Temel Stilleri */
+.body {
+    flex: 25%;
+    
+}
+
+/* HTML ve Body Boyutlandırma */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+        /* Navigasyon Responsive Ayarları */
+nav, nav1 {
+    padding: 10px 30px; /* Varsayılan padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap; /* Küçük ekranlarda sarmalanmayı sağlar */
+}
+nav1 ul{
+    display: flex;
+    gap: 90px;
+    transform: translate(-20%, -0%);
+    font-size: 20px;
+
+    
+}
+
+nav1 ul li{
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+}
+nav1 ul li a {
+    text-decoration: none;
+    color: black;
+}
+nav1 ul li a:hover {
+    color: red;
+}
+
+/* Birinci Navigasyon */
+nav {
+    background: #212529;
+    height: auto; /* Dinamik yükseklik */
+    min-height: 45px;
+}
+
+/* İkinci Navigasyon */
+nav1 {
+    background: white;
+    height: auto; /* Dinamik yükseklik */
+    min-height: 80px;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+/* Navigasyon Listesi Temel Stilleri */
+nav ul, nav1 ul {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Varsayılan boşluk */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Liste Elemanları */
+nav ul li, nav1 ul li {
+    position: relative;
+}
+
+/* Link Stilleri */
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease; /* Yumuşak renk geçişi */
+}
+
+/* Hover Efektleri */
+nav ul li a:hover {
+    color: #ff0000;
+}
+
+/* Sosyal Medya İkonları */
+.menu-icon i {
+    color: #fff;
+    font-size: 20px;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.menu-icon i:hover {
+    color: gray;
+}
+
+/* Logo ve İsim Stilleri */
+.logo {
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.isimler {
+
+    height: 80px;
+    /*text-align: center;
+    font-size: 35px;
+    color: black;
+    margin: 0;
+    list-style-type: none;
+    text-decoration: none;*/
+}
+
+/* Responsive Tasarım */
+@media screen and (max-width: 1024px) {
+    nav, nav1 {
+        padding: 10px 15px; /* Daha dar padding */
+    }
+
+    nav ul, nav1 ul {
+        gap: 30px; /* Boşlukları azalt */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Mobil Navigasyon Menüsü */
+    nav, nav1 {
+        flex-direction: column; /* Dikey dizilim */
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav ul, nav1 ul {
+        flex-direction: column; /* Menü elemanlarını dikey hizala */
+        gap: 15px; /* Dikey boşluk */
+        width: 100%; /* Tam genişlik */
+        text-align: center;
+    }
+
+    .logo, .isimler {
+        margin-bottom: 10px; /* Alt boşluk */
+    }
+
+    .isimler {
+        font-size: 25px; /* Mobilde küçük font */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Çok küçük ekranlar için */
+    nav, nav1 {
+        padding: 5px;
+    }
+
+    nav ul, nav1 ul {
+        gap: 10px; /* Daha az boşluk */
+    }
+
+    .isimler {
+        font-size: 20px; /* Daha da küçük font */
+    }
+
+    .menu-icon i {
+        font-size: 16px; /* İkon boyutunu küçült */
+    }
+}
+
+/* Mobil Menü Açma/Kapama Butonu (Gerekirse eklenebilir) */
+.mobile-menu-toggle {
+    display: none; /* Varsayılan olarak gizli */
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block; /* Mobilde görünür */
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+}
+
+/* Menü Açık/Kapalı Durumları */
+.nav-menu {
+    transition: all 0.3s ease; /* Yumuşak geçiş */
+}
+
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        max-height: 0; /* Mobilde menüyü gizle */
+        overflow: hidden;
+    }
+
+    .nav-menu.active {
+        max-height: 300px; /* Açıldığında görünür */
+    }
+}
+
+        /* Campaign Container */
+        .campaigns-container {
+            display: flex;
+            flex-wrap: wrap; /* Alt satıra geçmeyi sağlar */
+            justify-content: center; /* Ortalama */
+            gap: 20px; /* Kartlar arası boşluk */
+        }
+
+        /* Individual Campaign Card */
+        .campaign-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: calc(50% - 20px); /* İki kart yan yana */
+            max-width: 500px; /* Maksimum genişlik */
+            margin-bottom: 20px; /* Alt sıradaki kartlar için alt boşluk */
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+     
+
+        /* Responsive Ayarları */
+        @media (max-width: 768px) {
+            .campaign-card {
+                width: 100%; /* Dar ekranlarda tam genişlik */
+            }
+        }
+
+        /* Campaign Image */
+        .campaign-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Campaign Details */
+        .campaign-details {
+            padding: 15px;
+        }
+
+        .campaign-title {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .campaign-dates {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .campaign-description {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Call to Action Button */
+        
+        
+
+        .campaign-button:hover {
+            background-color: #c0392b;
+        }
+
+        .containera {
+    max-width: 1600px;
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+
+.sectiona {
+    flex: 1;
+    margin: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sectiona h2 {
+    color: #ff0000;
+    margin-bottom: 20px;
+    margin-left: 15rem;
+}
+
+.brand-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 16rem;
+}
+
+.brand-list li {
+    margin-bottom: 5px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 13rem;
+}
+
+.social-media a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    color: #ccc;
+}
+
+.info {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 12rem;
+}
+
+.hesap {
+    margin-left: 12rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .sectiona h2 {
+        margin-left: 10rem;
+    }
+
+    .brand-list {
+        margin-left: 10rem;
+    }
+
+    .social-media {
+        margin-left: 8rem;
+    }
+
+    .info {
+        margin-left: 8rem;
+    }
+
+    .hesap {
+        margin-left: 8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .containera {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sectiona {
+        margin: 20px 0;
+    }
+
+    .brand-list {
+        margin-left: 0;
+    }
+
+    .social-media, .info, .hesap {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-list {
+        flex-direction: row; /* Yan yana hizalamaya devam ediyoruz */
+    }
+
+    .sectiona h2 {
+        margin-left: 0;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="kampanya.html">Kampanya</a></li>
+            <li><a href="haberler.html">Haberler</a></li>
+            <li><a href="lastikrehberi.html">Lastik rehberi</a></li>
+        </ul>
+        <div class="menu-icon">
+           <a href="https://www.instagram.com/eshat_al_/"  target="_blank"> <i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-twitter"></i></a>
+            <!--<i class="fa-solid fa-magnifying-glass"></i>-->
+        </div>
+    </nav>
+
+    <!-- Logo ve Ana Menü -->
+    <nav1>
+        <a href="menü1.html"><img class="isimler" src="logo3.jpg" alt=""></a>
+        </div>
+        <ul>
+            <li><a href="hakımızda.html">HAKKIMIZDA</a></li>
+            <li><a href="markalar.html">MARKALAR</a></li>
+            <li><a href="iletişim.html">İLETİŞİM</a></li>
+            <li><a href="index.html">PAZAR YERİMİZ</a>
+        </ul>
+    </nav1>
+
+
+
+
+
+
+
+
+    <!-- Kampanya Konteyneri -->
+    <div class="campaigns-container">
+        
+        <!-- Michelin Kampanyası -->
+        <div class="campaign-card">
+            <img src="b8ER9-075240-Lcx.jpg" alt="Michelin Kış Kampanyası" class="campaign-image">
+            <div class="campaign-details">
+                <h2 class="campaign-title">Michelin Kış Kampanyası</h2>
+                <p class="campaign-dates">15 Ekim 2024 - 15 Aralık 2024</p>
+                <p class="campaign-description">
+                    4 adet Michelin lastik alana 2.000 TL Opet yakıt kartı hediye!
+                </p>
+              
+            </div>
+        </div>
+
+        <!-- Pirelli Kampanyası -->
+        <div class="campaign-card">
+            <img src="b8ER9-075240-Lcx.jpg" alt="Pirelli Kış Kampanyası" class="campaign-image">
+            <div class="campaign-details">
+                <h2 class="campaign-title">Pirelli Kış Kampanyası</h2>
+                <p class="campaign-dates">1 Ekim 2024 - 31 Aralık 2024</p>
+                <p class="campaign-description">
+                    18" ve üzeri jantlı araçlara Pirelli lastik alana 1.500 TL Shell hediye kartı!
+                </p>
+                
+            </div>
+        </div>
+
+        <!-- Continental Kampanyası -->
+        <div class="campaign-card">
+            <img src="b8ER9-075240-Lcx.jpg" alt="Continental Kış Kampanyası" class="campaign-image">
+            <div class="campaign-details">
+                <h2 class="campaign-title">Continental Kış Kampanyası</h2>
+                <p class="campaign-dates">1 Kasım 2024 - 30 Aralık 2024</p>
+                <p class="campaign-description">
+                    4 adet Continental lastik alana ücretsiz balans ve rot ayarı!
+                </p>
+                
+            </div>
+        </div>
+
+        <!-- Goodyear Kampanyası -->
+        <div class="campaign-card">
+            <img src="b8ER9-075240-Lcx.jpg" alt="Goodyear Kış Kampanyası" class="campaign-image">
+            <div class="campaign-details">
+                <h2 class="campaign-title">Goodyear Kış Kampanyası</h2>
+                <p class="campaign-dates">15 Kasım 2024 - 15 Ocak 2025</p>
+                <p class="campaign-description">
+                    4 adet Goodyear lastik alana 1.000 TL değerinde hediye çeki!
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="containera">
+        <div class="sectiona">
+          <h2>MARKALAR</h2>
+          <ul class="brand-list">
+            <li>Goodyear</li>
+            <li>Michelin</li>
+            <li>Pirelli</li>
+            <li>Continental</li>
+            <li>Hankook</li>
+            <li>Marshal</li>
+            <li>Tatko</li>
+            <li>Bkt</li>
+            <li>Vitour</li>
+            <li>Riken</li>
+            <li>Lassa</li>
+            <li>Waterfall</li>
+            <li>Bridgestone</li>
+            <li>Yokohama</li>
+            <li>BFGoodrich</li>
+            <li>Kumho</li>
+            <li>Cooper</li>
+            <li>Minerva</li>
+            <li>Unique</li>
+          </ul>
+        </div>
+        <div class="sectiona">
+          <h2>SOSYAL MEDYA</h2>
+          <p>HESAPLARIMIZ</p>
+          <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/eshat_al_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="info">
+            <p>Site Kullanım Koşulları</p>
+            <p>Kişisel Verilerin Korunması ve Gizlilik</p>
+          </div>
+        </div>
+      </div>
+
+
+</body>
+</html>
